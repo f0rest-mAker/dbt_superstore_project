@@ -1,0 +1,13 @@
+version: 2
+
+
+sources:
+  - name: superstore
+    description: "Sample SuperStore data."
+    loader: Manual
+    database: superstore_dbt
+    schema: superstore
+    tables:
+      - name: orders
+      - name: people
+      - name: returns

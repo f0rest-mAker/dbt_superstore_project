@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_ship
+    description: "Ship dimension table. Contains ships mode information."
+    columns:
+      - name: ship_mode_id
+        description: "Ship mode's ID."
+        data_tests:
+          - not_null
+          - unique
+      - name: ship_mode
+        description: "Ship mode"
+        data_tests:
+          - not_null
+          - unique
+      - name: avg_shipping_days
+        description: "Average number of delivering days."
+        data_tests:
+          - not_null

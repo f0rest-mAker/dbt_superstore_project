@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: stg_superstore__orders
+    description: "Table with superstore's orders data."
+    columns:
+      - name: row_id
+        description: "Rows identifier."
+        data_tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: "Order's ID."
+        data_tests:
+          - not_null
+      - name: order_date
+        description: "Date when order was made."
+        data_tests:
+          - not_null
+      - name: ship_date
+        description: "Date when order was delivered."
+        data_tests:
+          - not_null
+      - name: ship_mode
+        description: "How the order was delivered at ship."
+        data_tests:
+          - not_null
+      - name: customer_id
+        description: "Customer's ID."
+        data_tests:
+          - not_null
+      - name: customer_name
+        description: "Customer's name."
+        data_tests:
+          - not_null
+      - name: segment
+        description: "Customer's segment."
+        data_tests:
+          - not_null
+      - name: country
+        description: "Delivery country."
+        data_tests:
+          - not_null
+      - name: city
+        description: "Delivery city."
+        data_tests:
+          - not_null
+      - name: state
+        description: "Delivery state."
+        data_tests:
+          - not_null
+      - name: postal_code
+        description: "Delivery postal code."
+        data_tests:
+          - not_null
+      - name: region
+        description: "Delivery region."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref("stg_superstore__people")
+              field: region
+      - name: product_id
+        description: "Product's ID."
+        data_tests:
+          - not_null
+      - name: category
+        description: "Product's category."
+        data_tests:
+          - not_null
+      - name: subcategory
+        description: "Product's subcategory."
+        data_tests:
+          - not_null
+      - name: product_name
+        description: "Product's name."
+        data_tests:
+          - not_null
+      - name: sales
+        description: "Sales by sold products."
+        data_tests:
+          - not_null
+      - name: quantity
+        description: "Number of sold product at order."
+        data_tests:
+          - not_null
+      - name: discount
+        description: "Discount to product."
+        data_tests:
+          - not_null
+      - name: profit
+        description: "profit by sold product."
+        data_tests:
+          - not_null

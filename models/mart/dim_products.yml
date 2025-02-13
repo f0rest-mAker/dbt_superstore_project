@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: "dim_products"
+    description: "Dimension table with products information."
+    columns:
+      - name: product_id
+        description: "Product's ID."
+        data_tests:
+          - not_null
+          - unique
+      - name: category
+        description: "Product's category."
+        data_tests:
+          - not_null
+      - name: subcategory
+        description: "Product's subcategory."
+        data_tests:
+          - not_null
+      - name: product_name
+        description: "Product's name."
+        data_tests:
+          - not_null

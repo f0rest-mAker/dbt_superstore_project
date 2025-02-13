@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: "dim_deliver"
+    description: "Dimension table with products information."
+    columns:
+      - name: place_id
+        description: "Deliver place ID."
+        data_tests:
+          - not_null
+          - unique
+      - name: country
+        description: "Deliver place country."
+        data_tests:
+          - not_null
+      - name: city
+        description: "Deliver place city."
+        data_tests:
+          - not_null
+      - name: state
+        description: "Deliver place state."
+        data_tests:
+          - not_null
+      - name: postal_code
+        description: "Deliver place postal code."
+        data_tests:
+          - not_null
+      - name: region
+        description: "Deliver place region."
+        data_tests:
+          - accepted_values:
+              values: ["West", "East", "Central", "South"]
+      - name: number_of_orders
+        description: "Number of counts delivered to this deliver place."
+        data_tests:
+          - not_null

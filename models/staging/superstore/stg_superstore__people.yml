@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_superstore__people
+    description: "Table with managers."
+    columns:
+      - name: manager
+        description: "Manager's first and last name."
+        data_tests:
+          - not_null
+      - name: region
+        description: "Manager's working region."
+        data_tests:
+          - accepted_values:
+              values: ["West", "East", "Central", "South"]
