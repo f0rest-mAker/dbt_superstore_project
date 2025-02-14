@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: "dim_products"
-    description: "Dimension table with products information."
+  - name: "fct_products"
+    description: "Fact model with products information."
     columns:
       - name: product_id
         description: "Product's ID."
@@ -21,3 +21,9 @@ models:
         description: "Product's name."
         data_tests:
           - not_null
+      - name: sales
+        description: "All sales of this product."
+      - name: profit
+        description: "All profit of this product."
+      - name: avg_discount
+        description: "Average discount for this product."
