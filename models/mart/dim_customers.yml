@@ -26,7 +26,7 @@ models:
         description: "Customer's most recent order date"
         data_tests:
           - not_null
-      - name: number of orders
+      - name: number_of_orders
         description: "Customer's number of orders"
         data_tests:
           - not_null

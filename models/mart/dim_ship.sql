@@ -2,7 +2,7 @@ with
 ships as (
     select
         ship_mode,
-        day(ship_date - order_date) as shipping_days
+        ship_date - order_date as shipping_days
     from {{ ref('stg_superstore__orders') }}
 ),
 final as (
@@ -13,7 +13,7 @@ final as (
     group by ship_mode
 )
 select 
-    row_number() over() as ship_mode_id
+    row_number() over() as ship_mode_id,
     ship_mode,
     avg_shipping_days
 from final

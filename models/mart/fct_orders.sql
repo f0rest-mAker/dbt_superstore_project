@@ -1,45 +1,25 @@
 with 
-cut_orders as (
-    select distinct
-        order_id,
-        ship_mode,
-        customer_name,
-        segment,
-        country,
-        state,
-        city,
-        postal_code,
-        region,
-        category,
-        subcategory,
-        product_name,
-        sales,
-        quantity,
-        profit,
-        discount
-    from {{ ref('stg_superstore__orders') }}
-),
 new_combined_orders as (
     select distinct
         order_id,
-        ship_mode_id,
-        customer_id,
-        place_id,
-    from cut_orders join {{ ref('dim_customers') }} using(customer_name, segment)
-                    join {{ ref('dim_deliver') }} using(country, state, city, postal_code, region)
-                    join {{ ref('dim_ship') }} using(ship_mode)
+        s.ship_mode_id,
+        c.customer_id,
+        d.place_id
+    from {{ ref('stg_superstore__orders') }} join {{ ref('dim_customers') }} as c using(customer_name, segment)
+                join {{ ref('dim_deliver') }} as d using(country, state, city, postal_code, region)
+                join {{ ref('dim_ship') }} as s using(ship_mode)
 ),
 orders_agg as (
     select
         order_id,
-        day(max(ship_date) - max(order_date)) as delivering_days,
+        max(ship_date) - max(order_date) as delivering_days,
         sum(sales) as sales,
         round(avg(discount), 4) as avg_discount_to_products,
-        sum(profit) as profit
+        sum(profit) as profit,
         sum(quantity) as quantity,
         count(distinct product_id) as number_of_products,
         round(avg(sales / quantity), 4) as avg_sales_per_product
-    from cut_orders
+    from {{ ref('stg_superstore__orders') }}
     group by order_id
 ),
 final as (
@@ -54,7 +34,7 @@ select
     delivering_days,
     sales,
     avg_discount_to_products,
-    profit
+    profit,
     quantity,
     number_of_products,
     avg_sales_per_product

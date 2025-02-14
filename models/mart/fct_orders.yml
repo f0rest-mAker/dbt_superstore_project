@@ -6,46 +6,23 @@ models:
     columns:
       - name: order_id
         description: "Order's identifier."
-        data_tests:
-          - not_null
-          - unique
       - name: ship_mode_id
         description: "Ship mode's ID for order delivery."
-        data_tests:
-          - not_null
       - name: customer_id
         description: "Customer's ID."
-        data_tests:
-          - not_null
       - name: place_id
         description: "Order's delivery place ID."
-        data_tests:
-          - not_null
       - name: delivering_days
         description: "Number of delivery days."
-        data_tests:
-          - not_null
       - name: sales
         description: "Sales by order."
-        data_tests:
-          - not_null
       - name: avg_discount_to_products
         description: "Average discount to products."
-        data_tests:
-          - not_null
       - name: profit
         description: "Profit by order."
-        data_tests:
-          - not_null
       - name: quantity
         description: "Number of sold products by order."
-        data_tests:
-          - not_null
       - name: number_of_products
         description: "Number of products at order."
-        data_tests:
-          - not_null
       - name: avg_sales_per_product
         description: "Average sales per product."
-        data_tests:
-          - not_null

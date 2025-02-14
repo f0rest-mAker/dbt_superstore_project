@@ -7,7 +7,7 @@ returns as (
 ),
 orders_with_returns as (
     select 
-        product_id
+        product_id,
         product_name,
         category,
         subcategory,
@@ -17,7 +17,7 @@ orders_with_returns as (
 ),
 products as (
     select distinct
-        product_id
+        product_id,
         product_name,
         category,
         subcategory
@@ -25,15 +25,15 @@ products as (
 ),
 products_orders as (
     select 
-        product_id
-        sum(case when returned = 'No' then quantity else 0) as product_sold_count
-        sum(case when returned = 'Yes' then quantity else 0) as product_returned_count
+        product_id,
+        sum(case when returned = 'No' then quantity else 0 end) as product_sold_count,
+        sum(case when returned = 'Yes' then quantity else 0 end) as product_returned_count
     from orders_with_returns
     group by 1
 ),
 final as (
     select
-        product_id
+        product_id,
         product_name,
         category,
         subcategory,
